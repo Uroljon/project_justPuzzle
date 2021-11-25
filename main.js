@@ -1,6 +1,6 @@
 function init() {
     document.querySelector('.game').innerHTML = ""
-    let random_image = Math.ceil(Math.random() * 2) //for image sets
+    let random_image = Math.ceil(Math.random() * 10) //for image sets
     let random_box = []
 
     while (random_box.length < 9) {
