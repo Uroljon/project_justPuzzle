@@ -62,7 +62,7 @@ body {
 }
 
 .win_modal {
-  transition: 500ms;
+  transition: 300ms;
   transform: scale(0);
   position: fixed;
   left: 0;
