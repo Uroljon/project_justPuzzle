@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: back 20s ease infinite;
+          animation: back 20s ease infinite;
+  font-family: sans-serif;
+}
+
+.game_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90vh;
+}
+.game_wrapper h1 {
+  padding: 15px 0;
+  font-size: 5vw;
+  color: #0b310a;
+}
+.game_wrapper .game {
+  width: 500px;
+  border-radius: 9px;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.game_wrapper .game img {
+  width: 33.33333%;
+}
+.game_wrapper .buttons {
+  padding: 15px 0;
+}
+.game_wrapper .buttons button {
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 2vw;
+  border: none;
+  padding: 5px 10px;
+}
+.game_wrapper .buttons button.active {
+  background-color: #00db42;
+}
+
+.selected {
+  -webkit-animation: selected 1s infinite;
+          animation: selected 1s infinite;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.original {
+  order: unset !important;
+}
+
+.win_modal {
+  transition: 500ms;
+  transform: scale(0);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.911);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.win_modal.active {
+  transform: scale(1);
+}
+.win_modal .congrats {
+  color: white;
+  text-align: center;
+}
+.win_modal .congrats h2 {
+  font-size: 5vw;
+}
+.win_modal .congrats p {
+  padding: 15px 0;
+  font-size: 3vw;
+}
+.win_modal .congrats button {
+  cursor: pointer;
+  background-color: rgba(255, 235, 205, 0.664);
+  font-size: 2vw;
+  margin-top: 30px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+  .game_wrapper {
+    height: 95vh;
+  }
+  .game_wrapper h1 {
+    font-size: 8vw;
+    padding-bottom: 25px;
+  }
+  .game_wrapper .game {
+    width: 98vw;
+  }
+  .game_wrapper .buttons {
+    padding-top: 30px;
+  }
+  .game_wrapper .buttons button {
+    margin: 0 5px;
+    padding: 6px 10px 5px;
+    font-size: 4.7vw;
+  }
+
+  .win_modal .congrats h2 {
+    font-size: 7vw;
+  }
+  .win_modal .congrats p {
+    padding: 15px 0;
+    font-size: 5vw;
+  }
+  .win_modal .congrats button {
+    font-size: 5vw;
+    margin-top: 20px;
+    padding: 5px 10px;
+  }
+}
+@-webkit-keyframes back {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes back {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-webkit-keyframes selected {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes selected {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=style.css.map */
