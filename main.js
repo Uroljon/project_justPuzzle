@@ -13,19 +13,17 @@ function init() {
         document.querySelector('.game').innerHTML += `
         <img class="piece" data-order="${i}" style="order: ${i}" src="./assets/${random_image}/image_part_00${index + 1}.png" alt="${index + 1}"> `;
     })
-    
 }
 init()
-
 // game algorithm
-let step=0;
+let step = 0;
 let isMuted = false;
-document.querySelector('#mute').addEventListener("click",(e)=>{
+document.querySelector('#mute').addEventListener("click", (e) => {
     isMuted = isMuted ? false : true;
     e.target.classList.toggle("active")
 });
-document.querySelectorAll('.piece').forEach((item) => {
-    item.addEventListener("click", (e) => {
+document.querySelector(".game").addEventListener("click", (e)=>{
+    if(e.target.classList.contains("piece")){
         let selected = document.querySelector('.selected')
         ++step
         if (!selected) {
@@ -33,12 +31,12 @@ document.querySelectorAll('.piece').forEach((item) => {
         } else {
             let prev = Number(selected.getAttribute("data-order"));
             let current = Number(e.target.getAttribute("data-order"));
-
+        
             let top = (prev > 3) && (prev - 3); //1,2,3 emas
             let bottom = (prev < 7) && (prev + 3); //7,8,9 emas
             let left = (prev !== 7 && prev !== 4 && prev !== 1) && (prev - 1) //7,4,1 emas
             let right = (prev !== 3 && prev !== 6 && prev !== 9) && (prev + 1) //3,6,9 emas
-
+        
             // console.log(prev, current, top, right, bottom, left);
             if (current === top || current === bottom || current === left || current === right) {
                 selected.setAttribute("data-order", current)
@@ -46,12 +44,12 @@ document.querySelectorAll('.piece').forEach((item) => {
                 selected.classList.remove("selected")
                 e.target.setAttribute("data-order", prev)
                 e.target.style.order = `${prev}`;
-                if(!isMuted){
+                if (!isMuted) {
                     let audio = new Audio('./assets/sounds/correct.mp3');
                     audio.play();
                 }
             } else {
-                if(!isMuted){
+                if (!isMuted) {
                     let audio = new Audio('./assets/sounds/no.mp3');
                     audio.play();
                 }
@@ -64,12 +62,12 @@ document.querySelectorAll('.piece').forEach((item) => {
                 audio.play();
             }
         }
-    })
+    }
 });
+
 function chech_win() {
     let answer = true;
     document.querySelectorAll('.piece').forEach((item) => {
-        console.log(Number(item.alt), Number(item.style.order), Number(item.alt) !== Number(item.style.order));
         if (Number(item.alt) !== Number(item.style.order)) {
             answer = false
         }
@@ -77,15 +75,17 @@ function chech_win() {
     return answer
 }
 // show original
-document.querySelector('#original').addEventListener("mouseenter", () => {
+document.querySelector('#original').addEventListener("mouseenter", (e) => {
     document.querySelectorAll('.piece').forEach((item) => {
         item.classList.add("original")
     });
+    e.target.classList.add("active")
 });
-document.querySelector('#original').addEventListener("mouseleave", () => {
+document.querySelector('#original').addEventListener("mouseleave", (e) => {
     document.querySelectorAll('.piece').forEach((item) => {
         item.classList.remove("original")
     });
+    e.target.classList.remove("active")
 });
 // close modal
 document.querySelector('#close_modal').addEventListener("click", () => {
