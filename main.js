@@ -95,3 +95,4 @@ document.querySelector('#close_modal').addEventListener("click", () => {
 document.querySelector('#next').addEventListener("click", () => {
     init()
 });
+// 26.11.2021
